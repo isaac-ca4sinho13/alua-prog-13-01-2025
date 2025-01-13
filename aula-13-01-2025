@@ -1,0 +1,27 @@
+ajeitar os packages das classes dentro de main-url-model. (o . update() retorna um inteiro) (porta padrao do mysql = 3306) (spring.datasource.username=*nomde do ususario no mysql*) (action é a rota dentro do form)
+alunoDAO.java:
+	import org.springframework.jdbc.core.simple.JdbcClient;
+public class AlunoDAO{
+private final jdbcClient jdbcClient;
+
+public AlunoDAO(JdbcClient jdbcClient){
+this.jdbcClient = jdbcClient;
+}
+
+public void create(Aluno aluno){
+return jdbcClient.sql(sql: "Insert into aluno( nome, cpf, idade, email pessoal, senha, matricula)values(:nome, :ccpf, : idade, :email pessoal, :senha, :matricula").param(value: "nome",aluno.getNome()).param("cpf", aluno.getCpf())...).update();
+}
+}
+
+
+dentro de src-main-resource criar pasta templates:
+  cadAluno.html:
+    <html  xmlns:th="http://www.thymeleaf.org"
+    <head></head>
+    <body>
+    <form action="#" id="cadAluno" name="CadAluno" th:action="@{/cadAluno}" th:object="${aluno}" method="post">
+    <input th:field="*{nome}">
+    </form>
+    </body>
+
+    </html>
