@@ -19,7 +19,7 @@ dentro de src-main-resource criar pasta templates:
     <html  xmlns:th="http://www.thymeleaf.org"
     <head></head>
     <body>
-    <form action="#" id="cadAluno" name="CadAluno" th:action="@{/cadAluno}" th:object="${aluno}" method="post">
+    <form action="#" id="cadAluno" name="CadAluno" th:action="@{/cadAluno}" th:object="${aluno}"(ja vai pra o controller) method="post">
     <input th:field="*{nome}">
     </form>
     </body>
@@ -32,3 +32,22 @@ aula-20/01/2025
 
 @SpringBootApplication -> só lê até a pasta model ou não lê tudo
 tem que usar o @ComponentScan({"rotas"})
+
+dentro de uma pasta alunocontroler.java:
+	import br.ifpe.jaboatao.zacademicoweb.model.dao.AlunoDAO;
+	import org.springframework.stereotype.Controller;
+	import org.springframework.ui.Model;
+
+	@Controler
+	public class AlunoController{
+	private final AlunoDAO alunoDAO;
+
+
+	public AlunoController(AlunoDAO alunoDAO){
+		this.alunoDAO = alunoDAO;
+	}
+
+	public String CadastraAluno(@ModelAttribute Aluno aluno, Model(cntrl + espaço -> model de org.springframework.ui.Model ) model){
+
+	}
+	}
