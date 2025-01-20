@@ -25,3 +25,10 @@ dentro de src-main-resource criar pasta templates:
     </body>
 
     </html>
+
+
+
+aula-20/01/2025
+
+@SpringBootApplication -> só lê até a pasta model ou não lê tudo
+tem que usar o @ComponentScan({"rotas"})
