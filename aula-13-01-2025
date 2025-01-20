@@ -1,3 +1,4 @@
+springbootsatarterweb --> tem que adicionar essa dependência no arquivo das dependências(foto no celular)
 ajeitar os packages das classes dentro de main-url-model. (o . update() retorna um inteiro) (porta padrao do mysql = 3306) (spring.datasource.username=*nomde do ususario no mysql*) (action é a rota dentro do form)
 alunoDAO.java:
 	import org.springframework.jdbc.core.simple.JdbcClient;
@@ -33,10 +34,11 @@ aula-20/01/2025
 @SpringBootApplication -> só lê até a pasta model ou não lê tudo
 tem que usar o @ComponentScan({"rotas"})
 
-dentro de uma pasta alunocontroler.java:
+dentro de uma pasta: alunocontroler.java:
 	import br.ifpe.jaboatao.zacademicoweb.model.dao.AlunoDAO;
 	import org.springframework.stereotype.Controller;
 	import org.springframework.ui.Model;
+	import or.springframework.web.bind.(as importações do código abaixo vão vir pra cá automatcamente)
 
 	@Controler
 	public class AlunoController{
@@ -46,8 +48,31 @@ dentro de uma pasta alunocontroler.java:
 	public AlunoController(AlunoDAO alunoDAO){
 		this.alunoDAO = alunoDAO;
 	}
-
+	(path é a rota que colocou a requisição no html se lá é POST aqui tambem vai ser)@RequestMapping(value="/cadAluno", method=Request.POST);
 	public String CadastraAluno(@ModelAttribute Aluno aluno, Model(cntrl + espaço -> model de org.springframework.ui.Model ) model){
+		alunoDAO.Create(aluno);
+		model.addAttributes(attributName:"aluno":aluno); (recebe um objeto aluno chamdo aluno no banco de dados)
+		return "resultCadAluno"; (precisa dar uma resposta pra a view(pode ser qualquer página))
+		
+	}
+	}
 
-	}
-	}
+
+na pasta resources dentro de templates:
+	arquivo resultCadAluno.html:
+
+	 cadAluno.html:
+    <html xmlns:th="http://www.thymeleaf.org"
+    <head>
+   </head>
+    <body>
+   <h1>Aluno cadastrado com sucesso!</h1>
+	<p th:text="'Nome:' + ${aluno.nome}"> </p>
+	<p th:text="'matrícula:' + ${aluno.matricula}"> </p>
+	<p th:text="'CPF:' + ${aluno.CPF}"> </p>
+    </body>
+
+    </html>
+
+
+
