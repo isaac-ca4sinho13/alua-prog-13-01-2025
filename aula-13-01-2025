@@ -1,3 +1,4 @@
+tem que colocr um anotation @Repository em public class AlunoDAO (coloquei no código abaixo)
 springbootsatarterweb --> tem que adicionar essa dependência no arquivo das dependências(foto no celular)
 ajeitar os packages das classes dentro de main-url-model. (o . update() retorna um inteiro) (porta padrao do mysql = 3306) (spring.datasource.username=*nomde do ususario no mysql*) (action é a rota dentro do form)
 alunoDAO.java:
@@ -5,6 +6,7 @@ alunoDAO.java:
 public class AlunoDAO{
 private final jdbcClient jdbcClient;
 
+@Repository
 public AlunoDAO(JdbcClient jdbcClient){
 this.jdbcClient = jdbcClient;
 }
@@ -75,4 +77,15 @@ na pasta resources dentro de templates:
     </html>
 
 
+
+dentro de resource-template-static:
+	index.html:
+<html xmlns:th="http://www.thymeleaf.org"
+    <head>
+   </head>
+    <body>
+   <a href="/cadAluno>Cadastrar um aluno.</a>
+    </body>
+    </html>
+		
 
